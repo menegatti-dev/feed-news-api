@@ -4,10 +4,14 @@ import ListFeedService from '../services/ListFeedService';
 const feedsRouter = Router();
 
 feedsRouter.get('/', async (request, response) => {
-  const listFeed = new ListFeedService();
-  const { feeds } = await listFeed.execute();
+  try {
+    const listFeed = new ListFeedService();
+    const { feeds } = await listFeed.execute();
 
-  return response.json(feeds);
+    return response.json(feeds);
+  } catch (err) {
+    return response.status(400).json({ error: err.message });
+  }
 });
 
 export default feedsRouter;
