@@ -5,7 +5,7 @@ class Feed {
 
   description: string;
 
-  postdate: Date;
+  postdate: string;
 
   author: string;
 }
